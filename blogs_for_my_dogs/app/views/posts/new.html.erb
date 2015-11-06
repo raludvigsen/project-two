@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div>
+		<%= form_for(:post, url: '/posts', :method => 'post') do |f| %>
+
+		    <%= f.label :title %>
+		    <%= f.text_field :author %>
+		    <br>
+		    <br>
+		    <%= f.label :content %>
+		    <%= f.text_field :content %>
+		    <br>
+		    <br>
+  		<%= f.submit "Make post"%>
+  		<% end %>
+	</div>
+</body>
+</html>

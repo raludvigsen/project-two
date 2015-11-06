@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<% @posts.each do |post| %>
+		<div>
+			<br>
+			Title: <%= post.author %>
+			<br>
+			Content: <%= post.content %>
+			<br>
+			Created at: <%= post.created_at %>
+			<br>
+		</div>
+	<% end %>
+	<br>
+	<br>
+	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+	<%= link_to('New Post', '/posts/new', :method => :get) %> 
+</body>
+
+</html>
