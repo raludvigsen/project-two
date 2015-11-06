@@ -3,6 +3,10 @@
 	<title></title>
 </head>
 <body>
+
+	
+	<h3>Your Posts:</h3>
+
 	<% @posts.each do |post| %>
 		<div>
 			<br>
@@ -14,10 +18,13 @@
 			<br>
 		</div>
 	<% end %>
+
 	<br>
 	<br>
 	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
 	<%= link_to('New Post', '/posts/new', :method => :get) %> 
+
+	
 </body>
 
 </html>
