@@ -6,25 +6,29 @@
 
 	
 	<h3>Your Posts:</h3>
-
-	<% @posts.each do |post| %>
-		<div>
-			<br>
-			Title: <%= post.author %>
-			<br>
-			Content: <%= post.content %>
-			<br>
-			Created at: <%= post.created_at %>
-			<br>
-		</div>
-	<% end %>
+	
+	<section class="posts">
+		<% @posts.each do |post| %>
+			<div class="post-div">
+				<h4><%= post.author %></h4>
+				<br>
+				<h5>Content: </h5>
+				<br>
+				<%= post.content %>
+				<br>
+				</h7>Posted at: <%= post.created_at %></h7>
+				<%= link_to 'View', post_path(post.id) %>
+				<br>
+			</div>
+		<% end %>
+	</section>
 
 	<br>
 	<br>
 	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
 	<%= link_to('New Post', '/posts/new', :method => :get) %> 
 
-	
+
 </body>
 
 </html>

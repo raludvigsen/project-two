@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :posts
+  resources :visitors
 
   root 'posts#index'
 
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   post   'user_session'   => 'devise/sessions#create'
   delete 'destroy_user_session'  => 'devise/sessions#destroy'
 end
+
 
 #                   Prefix Verb   URI Pattern                     Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)        devise/sessions#new
@@ -34,8 +36,15 @@ end
 #                          PATCH  /posts/:id(.:format)            posts#update
 #                          PUT    /posts/:id(.:format)            posts#update
 #                          DELETE /posts/:id(.:format)            posts#destroy
-#                     root GET    /                               posts#index
+#                 visitors GET    /visitors(.:format)             visitors#index
+#                          POST   /visitors(.:format)             visitors#create
+#              new_visitor GET    /visitors/new(.:format)         visitors#new
+#             edit_visitor GET    /visitors/:id/edit(.:format)    visitors#edit
+#                  visitor GET    /visitors/:id(.:format)         visitors#show
+#                          PATCH  /visitors/:id(.:format)         visitors#update
+#                          PUT    /visitors/:id(.:format)         visitors#update
+#                          DELETE /visitors/:id(.:format)         visitors#destroy
+#                     root GET    /                               visitors#index
 #                          GET    /new_user_session(.:format)     devise/sessions#new
 #                          POST   /user_session(.:format)         devise/sessions#create
 #                          DELETE /destroy_user_session(.:format) devise/sessions#destroy
-
