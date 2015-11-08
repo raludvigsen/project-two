@@ -3,13 +3,11 @@
 	<title></title>
 </head>
 <body>
-	<h4><%= @post.author %></h4>
-	<br>
-	<h5>Content: </h5>
-	<br>
-	<%= @post.content %>
-	<br>
-	</h7>Posted at: <%= @post.created_at %></h7>
-
+	<div>
+		<%= @post.author %>
+		<%= @post.content %>
+		<br>
+		<a href="/posts/<%= @post.id %>/edit">Edit this post</a>
+	</div>
 </body>
 </html>

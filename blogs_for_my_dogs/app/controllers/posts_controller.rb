@@ -1,9 +1,15 @@
 class PostsController < ApplicationController
-	before_action :authenticate_user!, only:
+	skip_before_filter :authenticate_user!, only: [:index]
+	before_action :authenticate_user!, only: [:create, :edit, :update]
+	before_action :set_post, only: [:show, :edit, :update, :destroy]
 
 
 	def index
 		@posts = Post.all
+	end
+
+	def new
+		@post = Post.new
 	end
 
 	def create
@@ -18,20 +24,39 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@test = "Testing show"
+	
+	end
+
+	def edit
+
 	end
 
 	def update
-		if @post.update(car_params)
-			redirect_to @post
+		
+		if @post.user_id = current_user.id
+			if @post.update(post_params)
+				redirect_to @post
+			else
+				render :action => :edit
+			end
 		else
-			render :action => :edit
+			redirect_to @post
 		end
 	end
 
+	def destroy
+		@post.destroy
+		redirect_to posts_url
+	end
+
 	private
+
+	def set_post
+		@post = Post.find(params[:id])
+	end
+
 	def post_params
-		params.require(:post).permit(:author, :content)
+		params.require(:post).permit(:id, :author, :content)
 	end
 
 end
