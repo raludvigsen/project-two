@@ -13,7 +13,7 @@
 				<%= link_to 'Read more', post_path(post.id) %>
 				<br>
 				</h7>Posted at: <%= post.created_at %></h7>
-				
+				<br>
 				
 				<br>
 			</div>
@@ -26,7 +26,7 @@
 		<%= link_to('New Post', '/posts/new', :method => :get) %>
 
 
-
+	<%= render :partial => 'footer' %>
 </body>
 
 </html>
