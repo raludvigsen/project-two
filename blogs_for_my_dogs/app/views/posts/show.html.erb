@@ -28,7 +28,7 @@
 
 	<%= form_for [@post, Comment.new] do |f| %>
         <p>
-            <%= f.label :body, "new comment" %><br/>
+            <%= f.label :body, "new comment" %> 
             <%= f.text_area :body %>
         </p>
         <p><%= f.submit "add comment" %></p>
