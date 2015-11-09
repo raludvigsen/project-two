@@ -1,0 +1,14 @@
+<%= render :partial => 'header' %>
+
+<h1>a r c h i v e s</h1>
+			   
+	<% @post_months.sort.reverse.each do |month, posts| %>
+		<h4><%=h month.strftime("%B %Y") %></h4>
+			<ul>
+				<% for post in posts %>
+				    <li><%=h link_to post.author, post_path(post) %></li>
+				<% end %>
+			</ul>
+	<% end %>
+
+<%= render :partial => 'footer' %>

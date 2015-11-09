@@ -3,24 +3,35 @@
 	<title></title>
 </head>
 <body>
-	<div>
-		<%= @post.author %>
-		<%= @post.content %>
-		<br>
-		<a href="/posts/<%= @post.id %>/edit">Edit this post</a>	
-	</div>
+	<%= render :partial => 'header' %>
 
-	<h4>Comments</h4>
+	<section class="posts">
+		<div>
+			<h3><%= @post.author %></h3>
+			<br>
+			<%= @post.content %>
+			<br>
+			<% if current_user %>
+				<a href="/posts/<%= @post.id %>/edit">edit this post</a>	
+			<% else %>
+				
+			<% end %>
+			
+		</div>
+	</section>
+	<br>
+	<br>
+	<h4>c o m m e n t s</h4>
 		<div id="comments">
 	        <%= render :partial => @post.comments %>
 		</div>
 
 	<%= form_for [@post, Comment.new] do |f| %>
         <p>
-            <%= f.label :body, "New comment" %><br/>
+            <%= f.label :body, "new comment" %><br/>
             <%= f.text_area :body %>
         </p>
-        <p><%= f.submit "Add comment" %></p>
+        <p><%= f.submit "add comment" %></p>
 	<% end %>
 
 	<%= render :partial => 'footer' %>

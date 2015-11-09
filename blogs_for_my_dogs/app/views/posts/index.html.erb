@@ -3,27 +3,38 @@
 	<title></title>
 </head>
 <body>
+	<br>
+	<%= render :partial => 'header' %>
 
-	<section class="posts">
-		<% @posts.each do |post| %>
-			<div class="post-div">
-				<h4><%= post.author %></h4>
-				<br>
-				<div class="content"><%= truncate post.content, length: 500 %></div>
-				<%= link_to 'Read more', post_path(post.id) %>
-				<br>
-				</h7>Posted at: <%= post.created_at %></h7>
-				<br>
-				
-				<br>
-			</div>
+		<div class="posts">
+			<% @posts.each do |post| %>
+				<div class="post-div">
+					<h3><%= post.author %></h3>
+					<div class="content"><%= truncate post.content, length: 500 %></div>
+					<%= link_to 'read more', post_path(post.id) %>
+					<br>
+					</h7>posted at: <%= post.created_at %></h7>
+					<br>
+						
+					<br>
+				</div>
+			<% end %>
+		</div>
+
+
+		<br>
+		<br>
+
+
+
+		<% if current_user %>
+			<%= link_to('logout', destroy_user_session_path, :method => :delete) %> 
+			<%= link_to('new post', '/posts/new', :method => :get) %>
+			<%= link_to('about b.f.m.d.', about_path, :method => :get) %>
+		<% else %>
+			<%= link_to('about b.f.m.d.', about_path, :method => :get) %> |
+			<h7>send submissions in email</h7>
 		<% end %>
-	</section>
-
-	<br>
-	<br>
-		<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
-		<%= link_to('New Post', '/posts/new', :method => :get) %>
 
 
 	<%= render :partial => 'footer' %>

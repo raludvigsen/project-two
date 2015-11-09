@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   get    'new_user_session'   => 'devise/sessions#new'
   post   'user_session'   => 'devise/sessions#create'
   delete 'destroy_user_session'  => 'devise/sessions#destroy'
+
+  get '/about' => 'posts#about', as: "about"
+  get '/archive' => 'posts#archive', as: "archive"
+  get '/contact' => 'posts#contact', as: "contact"
+
 end
 
 
@@ -52,3 +57,5 @@ end
 #                          GET    /new_user_session(.:format)        devise/sessions#new
 #                          POST   /user_session(.:format)            devise/sessions#create
 #                          DELETE /destroy_user_session(.:format)    devise/sessions#destroy
+                   # about GET    /about(.:format)                   posts#about
+                                    # archive GET    /archive(.:format)                 posts#archive

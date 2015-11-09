@@ -3,6 +3,9 @@
 	<title></title>
 </head>
 <body>
+	<br>
+	<%= render :partial => 'header' %>
+
 	<div>
 		<%= form_for(:post, url: '/posts', :method => 'post') do |f| %>
 
@@ -10,14 +13,17 @@
 		    <%= f.text_field :author %>
 		    <br>
 		    <br>
-		    <%= f.label :content %>
-		    <%= f.text_field :content %>
+		    <div class="blog-post">
+			    <%= f.label :content %>
+			    <%= f.text_area :content, "cols" => 100, "rows" => 100 %>
+			</div>
 		    <br>
 		    <br>
-  		<%= f.submit "Make post"%>
+  		<%= f.submit "make post"%>
   		<% end %>
 	</div>
 
 	<%= render :partial => 'footer' %>
 </body>
 </html>
+
